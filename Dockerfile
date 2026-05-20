@@ -12,10 +12,10 @@ FROM node:20-alpine AS server-builder
 RUN apk add --no-cache python3 make g++
 WORKDIR /build
 COPY package*.json ./
-RUN npm ci
+RUN npm ci --legacy-peer-deps
 COPY tsconfig.json ./
 COPY src/ ./src/
-RUN npm run build && npm prune --omit=dev
+RUN npm run build && npm prune --omit=dev --legacy-peer-deps
 
 # ── Stage 3 : image de production ────────────────────────────────────────────
 FROM node:20-alpine
