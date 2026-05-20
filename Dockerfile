@@ -6,21 +6,23 @@ RUN npm ci
 COPY client/ .
 RUN npm run build -- --configuration production
 
-# ── Stage 2 : build NestJS ────────────────────────────────────────────────────
+# ── Stage 2 : build NestJS + prépare node_modules de production ───────────────
 FROM node:20-alpine AS server-builder
+# Outils requis pour compiler better-sqlite3 et bcrypt
+RUN apk add --no-cache python3 make g++
 WORKDIR /build
 COPY package*.json ./
 RUN npm ci
 COPY tsconfig.json ./
 COPY src/ ./src/
-RUN npm run build
+RUN npm run build && npm prune --omit=dev
 
 # ── Stage 3 : image de production ────────────────────────────────────────────
 FROM node:20-alpine
 WORKDIR /app
 
-COPY package*.json ./
-RUN npm ci --omit=dev
+# node_modules déjà compilés et purgés des devDependencies
+COPY --from=server-builder /build/node_modules ./node_modules/
 
 # Backend compilé
 COPY --from=server-builder /build/dist ./dist/
