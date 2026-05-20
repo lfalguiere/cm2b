@@ -2,16 +2,14 @@
 FROM node:20-alpine AS client-builder
 WORKDIR /build/client
 COPY client/package*.json ./
-RUN npm ci --prefer-offline
-COPY client/ .
+RUN npm ci COPY client/ .
 RUN npm run build -- --configuration production
 
 # ── Stage 2 : build NestJS ────────────────────────────────────────────────────
 FROM node:20-alpine AS server-builder
 WORKDIR /build
 COPY package*.json ./
-RUN npm ci --prefer-offline
-COPY tsconfig.json ./
+RUN npm ci COPY tsconfig.json ./
 COPY src/ ./src/
 RUN npm run build
 
@@ -20,8 +18,7 @@ FROM node:20-alpine
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm ci --omit=dev --prefer-offline
-
+RUN npm ci --omit=dev 
 # Backend compilé
 COPY --from=server-builder /build/dist ./dist/
 
