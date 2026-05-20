@@ -19,6 +19,7 @@ RUN npm run build && npm prune --omit=dev --legacy-peer-deps
 
 # ── Stage 3 : image de production ────────────────────────────────────────────
 FROM node:20-alpine
+RUN apk add --no-cache openssl
 WORKDIR /app
 
 # node_modules déjà compilés et purgés des devDependencies
