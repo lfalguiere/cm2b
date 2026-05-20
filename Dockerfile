@@ -39,7 +39,8 @@ COPY entrypoint.sh ./
 RUN chmod +x entrypoint.sh
 
 ENV NODE_ENV=production \
-    DB_PATH=/app/data/cm2b.sqlite
+    DB_PATH=/app/data/cm2b.sqlite \
+    TYPEORM_SYNC=true
 
 EXPOSE 3000
 ENTRYPOINT ["sh", "entrypoint.sh"]
