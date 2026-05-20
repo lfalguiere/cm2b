@@ -1,0 +1,11 @@
+services:
+  cm2b:
+    image: ghcr.io/lfalguiere/cm2b:latest
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - cm2b-data:/app/data
+
+volumes:
+  cm2b-data:
