@@ -58,8 +58,8 @@ import { RolesGuard } from './auth/guards/roles.guard';
           DocumentRevision,
           ViewElementPosition,
         ],
-        synchronize: config.get('NODE_ENV') !== 'production',
-        migrationsRun: config.get('NODE_ENV') === 'production',
+        synchronize: config.get('TYPEORM_SYNC') !== 'false',
+        migrationsRun: false,
         logging: config.get('DB_LOGGING') === 'true' ? ['query', 'error'] : ['error'],
         extra: {
           pragma: {
@@ -78,7 +78,8 @@ import { RolesGuard } from './auth/guards/roles.guard';
     // Sert les fichiers statiques Angular compilés (prod uniquement — en dev Angular tourne sur 4200)
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'client', 'dist', 'cm2b-app', 'browser'),
-      exclude: ['/api/(.*)'],
+      exclude: ['/api/{*path}'],
+      renderPath: '/*',
     }),
 
     AuthModule,

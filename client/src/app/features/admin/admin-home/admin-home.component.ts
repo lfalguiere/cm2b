@@ -43,11 +43,18 @@ import { AuthService } from '../../../core/services/auth.service';
       </div>
       <span class="card-arrow">→</span>
     </a>
+    <a routerLink="seed" class="card">
+      <span class="card-icon">⚙</span>
+      <div class="card-body">
+        <span class="card-title">Seed du méta-modèle</span>
+        <span class="card-desc">Générer la fixture classes.json depuis les données actuelles</span>
+      </div>
+      <span class="card-arrow">→</span>
+    </a>
   </div>
 </div>
   `,
   styles: [`
-    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Syne:wght@400;600;700&display=swap');
     :host { display:block; height:100vh; background:#0d0d0d; color:#e8e8e8; font-family:'Syne',sans-serif; }
     .shell { display:flex; flex-direction:column; height:100vh; }
     .topbar {

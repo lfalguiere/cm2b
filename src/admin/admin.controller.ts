@@ -16,6 +16,11 @@ export class AdminController {
     return this.adminService.exportAll();
   }
 
+  @Get('seed')
+  exportSeed() {
+    return this.adminService.exportSeed();
+  }
+
   @Post('import')
   importData(@Body() body: any) {
     return this.adminService.importAll(body);

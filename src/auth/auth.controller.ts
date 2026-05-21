@@ -13,6 +13,7 @@ import { AuthService } from './auth.service';
 import {
   LoginDto,
   RegisterDto,
+  SetupDto,
   RefreshDto,
   LogoutDto,
   AuthResponseDto,
@@ -47,9 +48,31 @@ export class AuthController {
   }
 
   /**
+   * GET /auth/setup-needed
+   * Indique si l'application n'a pas encore de compte ADMIN.
+   */
+  @Public()
+  @Get('setup-needed')
+  async setupNeeded(): Promise<{ setupNeeded: boolean }> {
+    return { setupNeeded: await this.authService.isSetupNeeded() };
+  }
+
+  /**
+   * POST /auth/setup
+   * Crée le premier compte ADMIN. Échoue si un admin existe déjà.
+   */
+  @Public()
+  @Throttle({ default: { limit: 3, ttl: 60000 } })
+  @Post('setup')
+  @HttpCode(HttpStatus.CREATED)
+  async setup(@Body() dto: SetupDto): Promise<{ id: string; email: string }> {
+    const user = await this.authService.setupAdmin(dto.email, dto.username, dto.password);
+    return { id: user.id, email: user.email };
+  }
+
+  /**
    * POST /auth/register
    * Réservé aux ADMIN. Un ADMIN crée les comptes des autres utilisateurs.
-   * Le premier ADMIN est créé via le seed de base de données.
    */
   @Post('register')
   @Roles(UserRole.ADMIN)

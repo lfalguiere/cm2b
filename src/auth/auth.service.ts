@@ -3,13 +3,14 @@ import {
   Injectable,
   UnauthorizedException,
   BadRequestException,
+  ForbiddenException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, LessThan } from 'typeorm';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import * as crypto from 'crypto';
-import { User } from '../entities/user.entity';
+import { User, UserRole } from '../entities/user.entity';
 import { RefreshToken } from '../entities/refresh-token.entity';
 import { JwtPayload } from './strategies/jwt.strategy';
 
@@ -149,6 +150,20 @@ export class AuthService {
       role: role as any,
     });
     return this.userRepo.save(user);
+  }
+
+  // ─── SETUP (premier démarrage) ───────────────────────────────────────────
+
+  async isSetupNeeded(): Promise<boolean> {
+    const count = await this.userRepo.count({ where: { role: UserRole.ADMIN } });
+    return count === 0;
+  }
+
+  async setupAdmin(email: string, username: string, password: string): Promise<User> {
+    if (!(await this.isSetupNeeded())) {
+      throw new ForbiddenException('Setup déjà effectué');
+    }
+    return this.register(email, username, password, UserRole.ADMIN);
   }
 
   // ─── NETTOYAGE PÉRIODIQUE ─────────────────────────────────────────────────

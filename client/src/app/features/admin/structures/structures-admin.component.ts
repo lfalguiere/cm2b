@@ -210,7 +210,6 @@ const RELATION_TYPES: { value: RelationType; label: string; color: string }[] = 
 </div>
   `,
   styles: [`
-    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Syne:wght@400;600;700&display=swap');
 
     :host {
       display: block; height: 100vh;

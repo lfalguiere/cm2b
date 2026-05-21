@@ -3,7 +3,7 @@ import { Injectable, inject, signal, computed } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable, throwError, BehaviorSubject } from 'rxjs';
-import { tap, catchError, switchMap, filter, take } from 'rxjs/operators';
+import { tap, catchError, switchMap, filter, take, map } from 'rxjs/operators';
 import {
   LoginRequest, AuthResponse, TokenPair, UserProfile,
 } from '../models/api.models';
@@ -41,6 +41,16 @@ export class AuthService {
   }
 
   // ── API publique ────────────────────────────────────────────────────────────
+
+  checkSetupNeeded(): Observable<boolean> {
+    return this.http.get<{ setupNeeded: boolean }>(`${this.base}/setup-needed`).pipe(
+      map(r => r.setupNeeded),
+    );
+  }
+
+  setupAdmin(email: string, username: string, password: string): Observable<{ id: string; email: string }> {
+    return this.http.post<{ id: string; email: string }>(`${this.base}/setup`, { email, username, password });
+  }
 
   login(credentials: LoginRequest): Observable<AuthResponse> {
     return this.http.post<AuthResponse>(`${this.base}/login`, credentials).pipe(

@@ -46,6 +46,22 @@ export class RegisterDto {
   role?: UserRole;
 }
 
+export class SetupDto {
+  @IsEmail({}, { message: 'Email invalide' })
+  @Transform(({ value }) => value?.toLowerCase()?.trim())
+  email: string;
+
+  @IsString()
+  @MinLength(3)
+  @MaxLength(30)
+  @Transform(({ value }) => value?.trim())
+  username: string;
+
+  @IsString()
+  @MinLength(12, { message: 'Mot de passe : minimum 12 caractères' })
+  password: string;
+}
+
 export class RefreshDto {
   @IsString()
   @MinLength(1)
