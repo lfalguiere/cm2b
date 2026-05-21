@@ -43,6 +43,14 @@ import { AuthService } from '../../../core/services/auth.service';
       </div>
       <span class="card-arrow">→</span>
     </a>
+    <a routerLink="seed" class="card">
+      <span class="card-icon">⚙</span>
+      <div class="card-body">
+        <span class="card-title">Seed du méta-modèle</span>
+        <span class="card-desc">Générer la fixture classes.json depuis les données actuelles</span>
+      </div>
+      <span class="card-arrow">→</span>
+    </a>
   </div>
 </div>
   `,

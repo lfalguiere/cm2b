@@ -9,6 +9,8 @@ import {
   Relation,
   User,
   RefreshToken,
+  DocumentRevision,
+  ViewElementPosition,
 } from '../entities';
 
 export const AppDataSource = new DataSource({
@@ -30,6 +32,8 @@ export const AppDataSource = new DataSource({
     Relation,
     User,
     RefreshToken,
+    DocumentRevision,
+    ViewElementPosition,
   ],
 
   migrations: ['dist/database/migrations/*.js'],

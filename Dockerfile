@@ -28,6 +28,9 @@ COPY --from=server-builder /build/node_modules ./node_modules/
 # Backend compilé
 COPY --from=server-builder /build/dist ./dist/
 
+# Fixtures seed (fichiers JSON non compilés par tsc)
+COPY --from=server-builder /build/src/database/seed/fixtures/ ./dist/database/seed/fixtures/
+
 # Angular build — ServeStaticModule cherche :
 #   join(__dirname, '..', 'client', 'dist', 'cm2b-app', 'browser')
 #   __dirname = /app/dist  →  /app/client/dist/cm2b-app/browser  ✓

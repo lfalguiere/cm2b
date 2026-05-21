@@ -11,8 +11,6 @@ fi
 export JWT_SECRET=$(cat "$SECRET_FILE")
 
 echo "[cm2b] Initialisation de la base de données..."
-node dist/database/seed/create-admin.seed.js
-node dist/database/seed/initial-metamodel.seed.js
-node dist/database/seed/seed-structures.seed.js
+node dist/database/seed/seed-metamodel.seed.js
 
 exec node dist/main

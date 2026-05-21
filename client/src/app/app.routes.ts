@@ -1,8 +1,16 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './core/guards/auth.guard';
 import { roleGuard } from './core/guards/role.guard';
+import { setupGuard } from './core/guards/setup.guard';
 
 export const routes: Routes = [
+  {
+    path: 'setup',
+    loadComponent: () =>
+      import('./features/auth/setup/setup.component').then((m) => m.SetupComponent),
+    canActivate: [setupGuard],
+    title: 'CM2B — Configuration initiale',
+  },
   {
     path: 'login',
     loadComponent: () =>
