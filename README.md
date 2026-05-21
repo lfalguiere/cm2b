@@ -1,5 +1,3 @@
-# CM2B
-
 <p align="center">
   <img src="client/public/cm2b.png" alt="CM2B" width="160"/>
 </p>
@@ -10,6 +8,28 @@ Define the categories that make sense for your context, link things together, an
 ---
 
 ## Quick start with Docker
+
+> **Prerequisites:** [Docker Desktop](https://www.docker.com/products/docker-desktop/) must be installed on your machine. That's the only thing you need.
+
+### Option 1 — Docker Compose (recommended)
+
+**Step 1** — Download the configuration file into a new folder:
+
+```bash
+mkdir cm2b && cd cm2b
+curl -O https://raw.githubusercontent.com/lfalguiere/cm2b/main/docker-compose.yml
+```
+
+**Step 2** — Start the application:
+
+```bash
+docker compose up -d
+```
+
+**Step 3** — Open [http://localhost:3000](http://localhost:3000) in your browser.
+On first launch, you will be prompted to create your admin account.
+
+### Option 2 — Single command (no file needed)
 
 ```bash
 docker run -d \
