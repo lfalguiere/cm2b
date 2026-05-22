@@ -1,5 +1,3 @@
-# CM2B
-
 <p align="center">
   <img src="client/public/cm2b.png" alt="CM2B" width="160"/>
 </p>

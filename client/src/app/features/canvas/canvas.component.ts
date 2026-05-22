@@ -328,9 +328,40 @@ export class CanvasComponent implements OnInit {
   // ── Callbacks ──────────────────────────────────────────────────────────────
 
   onOrgSaved(el: CmElement) {
+    const isNew = this.orgModalMode() === 'create';
     this.orgElement.set(el);
     this.orgModalMode.set(null);
     this.orgCtx.visible = false;
+    if (isNew) this.autoCreateSingletonViews(el);
+  }
+
+  private autoCreateSingletonViews(el: CmElement) {
+    this.docApi.views.getStructureTree(this.DEMO_ORG_ID).subscribe({
+      next: (groups) => {
+        const singletons = groups
+          .flatMap(g => g.structures)
+          .filter(n => n.maxInstances === 1 && !n.view);
+
+        if (!singletons.length) {
+          this.leftPanelRefresh.update(n => n + 1);
+          return;
+        }
+
+        const creates = singletons.map(n =>
+          this.docApi.views.create({
+            name: n.structureName,
+            structureId: n.structureId,
+            organisationId: this.DEMO_ORG_ID,
+            parentElementId: el.id,
+          })
+        );
+
+        forkJoin(creates).subscribe({
+          next: () => this.leftPanelRefresh.update(n => n + 1),
+          error: () => this.leftPanelRefresh.update(n => n + 1),
+        });
+      },
+    });
   }
 
   onOrgRightClick(e: MouseEvent) {

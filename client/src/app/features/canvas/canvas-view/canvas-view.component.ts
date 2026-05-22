@@ -298,11 +298,28 @@ export class CanvasViewComponent implements OnInit, AfterViewInit, OnChanges, On
                attrName: e.attributeDefinition?.name ?? '',
                inverseAttrName: e.attributeDefinition?.inverseAttributeName ?? '' };
     });
+    const nullPosNodes = m.nodes.filter((n: any) => n.canvasX == null || n.canvasY == null);
     const needsLayout = !m.hasPerViewPositions && m.nodes.length > 1;
     setTimeout(() => {
       this.redrawLinks();
       if (needsLayout) this.autoLayout();
+      else if (nullPosNodes.length > 0) this.centerNewNodes(nullPosNodes);
     }, 50);
+  }
+
+  private centerNewNodes(nodes: any[]) {
+    const rect = this.wrap.getBoundingClientRect();
+    const cx = rect.width / 2;
+    const cy = rect.height / 2;
+    nodes.forEach((node: any, i: number) => {
+      const el = this.nodeEls.get(node.id);
+      if (!el) return;
+      const x = Math.round(cx - el.offsetWidth / 2 + i * 180);
+      const y = Math.round(cy - el.offsetHeight / 2);
+      el.style.left = x + 'px';
+      el.style.top  = y + 'px';
+      this.positionChanged.emit({ id: node.id, x, y });
+    });
   }
 
   private createNodeEl(node: any) {
