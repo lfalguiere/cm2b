@@ -179,6 +179,42 @@ async function seed() {
     console.log(`  → Attribut "${fa.className}.${fa.name}" créé`);
   }
 
+  // ── Résolution des inverseAttributeDefinitionId ────────────────────────────
+  // Le seed crée les attrs directement via le repo (sans passer par le service),
+  // donc inverseAttributeDefinitionId reste null. On le résout ici par nom dans
+  // les classes cibles. La passe est idempotente (skip si déjà résolu).
+  {
+    const complexAttrs = await attrRepo.find({ where: { kind: AttributeKind.COMPLEX } });
+    const attrByClassAndName = new Map<string, AttributeDefinition>();
+    for (const a of complexAttrs) {
+      attrByClassAndName.set(`${a.elementClassId}::${a.name}`, a);
+    }
+
+    let nLinked = 0;
+    for (const attr of complexAttrs) {
+      if (!attr.inverseAttributeName || attr.inverseAttributeDefinitionId) continue;
+
+      const inverseIds: string[] = [];
+      for (const targetClassId of attr.targetClassIds ?? []) {
+        const inv = attrByClassAndName.get(`${targetClassId}::${attr.inverseAttributeName}`);
+        if (!inv) continue;
+        inverseIds.push(inv.id);
+        if (!inv.inverseAttributeDefinitionId) {
+          inv.inverseAttributeDefinitionId = attr.id;
+          inv.inverseAttributeDefinitionIds = [attr.id];
+          await attrRepo.save(inv);
+        }
+      }
+      if (inverseIds.length > 0) {
+        attr.inverseAttributeDefinitionId = inverseIds[0];
+        attr.inverseAttributeDefinitionIds = inverseIds;
+        await attrRepo.save(attr);
+        nLinked++;
+      }
+    }
+    if (nLinked > 0) console.log(`  → ${nLinked} paire(s) d'attributs inverses liées`);
+  }
+
   // ── Structures (Element + AttributeValue) ──────────────────────────────────
   const elementRepo = AppDataSource.getRepository(Element);
   const avRepo      = AppDataSource.getRepository(AttributeValue);
