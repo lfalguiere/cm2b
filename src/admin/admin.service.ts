@@ -1,9 +1,9 @@
 // src/admin/admin.service.ts
 import { Injectable } from '@nestjs/common';
-import { DataSource } from 'typeorm';
+import { DataSource, In } from 'typeorm';
 import { ElementType } from '../entities/element-type.entity';
 import { ElementClass } from '../entities/element-class.entity';
-import { AttributeDefinition } from '../entities/attribute-definition.entity';
+import { AttributeDefinition, AttributeKind } from '../entities/attribute-definition.entity';
 import { Element } from '../entities/element.entity';
 import { AttributeValue } from '../entities/attribute-value.entity';
 import { Relation } from '../entities/relation.entity';
@@ -48,6 +48,98 @@ export class AdminService {
       attributeValues,
       relations,
       viewElementPositions,
+    };
+  }
+
+  async exportSeed() {
+    const m = this.dataSource.manager;
+    const [elementTypes, elementClasses, attributeDefinitions] = await Promise.all([
+      m.find(ElementType),
+      m.find(ElementClass, { relations: ['type', 'parentClass'] }),
+      m.find(AttributeDefinition),
+    ]);
+
+    const classNameById = new Map(elementClasses.map(c => [c.id, c.name]));
+
+    const structureClass = elementClasses.find(c => c.name === 'Structure');
+    let structures: any[] = [];
+    if (structureClass) {
+      const structureAttrs = await m.find(AttributeDefinition, { where: { elementClassId: structureClass.id } });
+      const attrIdByName = new Map(structureAttrs.map(a => [a.name, a.id]));
+      const structureElements = await m.find(Element, { where: { elementClassId: structureClass.id } });
+      const elementIds = structureElements.map(e => e.id);
+      const allAvs = elementIds.length ? await m.find(AttributeValue, { where: { elementId: In(elementIds) } }) : [];
+      const avsByElement = new Map<string, AttributeValue[]>();
+      for (const av of allAvs) {
+        if (!avsByElement.has(av.elementId)) avsByElement.set(av.elementId, []);
+        avsByElement.get(av.elementId)!.push(av);
+      }
+      structures = structureElements.map(el => {
+        const avs = avsByElement.get(el.id) ?? [];
+        const getVal = (name: string) =>
+          avs.find(av => av.attributeDefinitionId === attrIdByName.get(name))?.value ?? null;
+        const allowedRaw = getVal('allowedClassIds');
+        const parentRaw = getVal('parentElementClassId');
+        const maxRaw = getVal('maxInstances');
+        return {
+          label: el.label,
+          structureType: getVal('structureType'),
+          description: getVal('description'),
+          allowedClassNames: allowedRaw
+            ? (JSON.parse(allowedRaw) as string[]).map(id => classNameById.get(id) ?? id)
+            : [],
+          allowedRelTypes: getVal('allowedRelTypes') ? JSON.parse(getVal('allowedRelTypes')!) : [],
+          maxInstances: maxRaw != null ? parseInt(maxRaw, 10) : null,
+          parentElementClassName: parentRaw ? (classNameById.get(parentRaw) ?? null) : null,
+        };
+      });
+    }
+
+    return {
+      version: '1.0',
+      generatedAt: new Date().toISOString(),
+      elementTypes: elementTypes.map(t => ({
+        name: t.name,
+        color: t.color ?? null,
+        icon: t.icon ?? null,
+      })),
+      elementClasses: elementClasses.map(c => ({
+        name: c.name,
+        typeName: (c as any).type?.name ?? null,
+        parentClassName: (c as any).parentClass?.name ?? null,
+        icon: c.icon ?? null,
+        color: c.color ?? null,
+        description: c.description ?? null,
+      })),
+      attributeDefinitions: attributeDefinitions.map(a => {
+        const base = {
+          className: classNameById.get(a.elementClassId) ?? null,
+          name: a.name,
+          kind: a.kind,
+          order: a.order,
+          required: a.required,
+          description: a.description ?? null,
+        };
+        if (a.kind === AttributeKind.SIMPLE) {
+          return {
+            ...base,
+            simpleType: a.simpleType,
+            validationRegex: a.validationRegex ?? null,
+            maxLength: a.maxLength ?? null,
+            defaultValue: a.defaultValue ?? null,
+            enumOptions: a.enumOptions ?? null,
+          };
+        }
+        return {
+          ...base,
+          relationType: a.relationType,
+          inverseAttributeName: a.inverseAttributeName ?? null,
+          targetClassNames: a.targetClassIds.map(id => classNameById.get(id) ?? id),
+          minRelations: a.minRelations,
+          maxRelations: a.maxRelations ?? null,
+        };
+      }),
+      structures,
     };
   }
 

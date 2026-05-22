@@ -1,0 +1,1451 @@
+{
+  "version": "1.0",
+  "generatedAt": "2026-05-21T11:14:46.913Z",
+  "elementTypes": [
+    {
+      "name": "Organisationnel",
+      "color": "#6366f1",
+      "icon": "building"
+    },
+    {
+      "name": "Actifs Humains",
+      "color": "#f59e0b",
+      "icon": "users"
+    },
+    {
+      "name": "Actifs Techniques",
+      "color": "#10b981",
+      "icon": "server"
+    },
+    {
+      "name": "Actifs Physiques",
+      "color": "#64748b",
+      "icon": "database"
+    }
+  ],
+  "elementClasses": [
+    {
+      "name": "Organisation",
+      "typeName": "Organisationnel",
+      "parentClassName": null,
+      "icon": null,
+      "color": "#6366f1",
+      "description": null
+    },
+    {
+      "name": "Mission",
+      "typeName": "Organisationnel",
+      "parentClassName": null,
+      "icon": null,
+      "color": "#f59e0b",
+      "description": null
+    },
+    {
+      "name": "Macro-Processus",
+      "typeName": "Organisationnel",
+      "parentClassName": null,
+      "icon": null,
+      "color": "#2563eb",
+      "description": "Les processus d’entreprise de l''organisation"
+    },
+    {
+      "name": "Processus Métier",
+      "typeName": "Organisationnel",
+      "parentClassName": null,
+      "icon": null,
+      "color": null,
+      "description": null
+    },
+    {
+      "name": "Activité",
+      "typeName": "Organisationnel",
+      "parentClassName": null,
+      "icon": null,
+      "color": null,
+      "description": null
+    },
+    {
+      "name": "Partie Prenante",
+      "typeName": "Actifs Humains",
+      "parentClassName": null,
+      "icon": null,
+      "color": "#64748b",
+      "description": null
+    },
+    {
+      "name": "Groupe",
+      "typeName": "Actifs Humains",
+      "parentClassName": "Collaborateurs",
+      "icon": null,
+      "color": "#64748b",
+      "description": null
+    },
+    {
+      "name": "Individu",
+      "typeName": "Actifs Humains",
+      "parentClassName": "Partie Prenante",
+      "icon": null,
+      "color": "#ec4899",
+      "description": null
+    },
+    {
+      "name": "Machine",
+      "typeName": "Actifs Techniques",
+      "parentClassName": null,
+      "icon": null,
+      "color": null,
+      "description": null
+    },
+    {
+      "name": "Machine physique",
+      "typeName": "Actifs Techniques",
+      "parentClassName": "Machine",
+      "icon": null,
+      "color": null,
+      "description": null
+    },
+    {
+      "name": "Machine Virtuelle",
+      "typeName": "Actifs Techniques",
+      "parentClassName": "Machine",
+      "icon": null,
+      "color": null,
+      "description": null
+    },
+    {
+      "name": "Serveur",
+      "typeName": "Actifs Techniques",
+      "parentClassName": "Machine physique",
+      "icon": null,
+      "color": null,
+      "description": null
+    },
+    {
+      "name": "Poste de travail",
+      "typeName": "Actifs Techniques",
+      "parentClassName": "Machine physique",
+      "icon": null,
+      "color": null,
+      "description": null
+    },
+    {
+      "name": "Système d'exploitation",
+      "typeName": "Actifs Techniques",
+      "parentClassName": "Logiciel",
+      "icon": null,
+      "color": null,
+      "description": null
+    },
+    {
+      "name": "Logiciel",
+      "typeName": "Actifs Techniques",
+      "parentClassName": null,
+      "icon": null,
+      "color": null,
+      "description": null
+    },
+    {
+      "name": "Composant",
+      "typeName": "Actifs Techniques",
+      "parentClassName": null,
+      "icon": null,
+      "color": null,
+      "description": null
+    },
+    {
+      "name": ".Net",
+      "typeName": "Actifs Techniques",
+      "parentClassName": "Composant",
+      "icon": null,
+      "color": null,
+      "description": null
+    },
+    {
+      "name": "PowerShell",
+      "typeName": "Actifs Techniques",
+      "parentClassName": "Composant",
+      "icon": null,
+      "color": null,
+      "description": null
+    },
+    {
+      "name": "Rôle Microsoft Windows",
+      "typeName": "Actifs Techniques",
+      "parentClassName": null,
+      "icon": null,
+      "color": null,
+      "description": null
+    },
+    {
+      "name": "Domaine Active Directory",
+      "typeName": "Actifs Techniques",
+      "parentClassName": "Rôle Microsoft Windows",
+      "icon": null,
+      "color": null,
+      "description": null
+    },
+    {
+      "name": "Unité d'organisation",
+      "typeName": "Actifs Techniques",
+      "parentClassName": "Domaine Active Directory",
+      "icon": null,
+      "color": null,
+      "description": null
+    },
+    {
+      "name": "Service de Fichier",
+      "typeName": "Actifs Techniques",
+      "parentClassName": "Rôle Microsoft Windows",
+      "icon": null,
+      "color": null,
+      "description": null
+    },
+    {
+      "name": "Autorité de Certification",
+      "typeName": "Actifs Techniques",
+      "parentClassName": "Rôle Microsoft Windows",
+      "icon": null,
+      "color": null,
+      "description": null
+    },
+    {
+      "name": "Serveur Web IIS",
+      "typeName": "Actifs Techniques",
+      "parentClassName": "Rôle Microsoft Windows",
+      "icon": null,
+      "color": null,
+      "description": null
+    },
+    {
+      "name": "Structure",
+      "typeName": "Organisationnel",
+      "parentClassName": null,
+      "icon": "layout",
+      "color": "#8b5cf6",
+      "description": null
+    },
+    {
+      "name": "Dossier",
+      "typeName": "Organisationnel",
+      "parentClassName": null,
+      "icon": "folder",
+      "color": "#f59e0b",
+      "description": null
+    },
+    {
+      "name": "Vue",
+      "typeName": "Organisationnel",
+      "parentClassName": null,
+      "icon": "file-text",
+      "color": "#06b6d4",
+      "description": null
+    },
+    {
+      "name": "Site",
+      "typeName": "Actifs Physiques",
+      "parentClassName": null,
+      "icon": null,
+      "color": "#64748b",
+      "description": null
+    },
+    {
+      "name": "Local",
+      "typeName": "Actifs Physiques",
+      "parentClassName": null,
+      "icon": null,
+      "color": "#64748b",
+      "description": null
+    },
+    {
+      "name": "Equipement réseau",
+      "typeName": "Actifs Techniques",
+      "parentClassName": "Machine physique",
+      "icon": null,
+      "color": null,
+      "description": null
+    },
+    {
+      "name": "Information",
+      "typeName": "Organisationnel",
+      "parentClassName": null,
+      "icon": null,
+      "color": "#10b981",
+      "description": "Information traitée"
+    },
+    {
+      "name": "Produit/Service",
+      "typeName": "Organisationnel",
+      "parentClassName": null,
+      "icon": null,
+      "color": "#8b5cf6",
+      "description": "Ce que produits l'organisation"
+    },
+    {
+      "name": "Baie",
+      "typeName": "Actifs Physiques",
+      "parentClassName": null,
+      "icon": null,
+      "color": null,
+      "description": null
+    },
+    {
+      "name": "Equipement Moyens généraux",
+      "typeName": "Actifs Techniques",
+      "parentClassName": null,
+      "icon": null,
+      "color": null,
+      "description": "Transformateur, Groupe Électrogène, Onduleur, Armoire électrique"
+    },
+    {
+      "name": "Collaborateurs",
+      "typeName": "Actifs Humains",
+      "parentClassName": "Partie Prenante",
+      "icon": null,
+      "color": null,
+      "description": null
+    },
+    {
+      "name": "Fournisseur",
+      "typeName": "Actifs Humains",
+      "parentClassName": "Partie Prenante",
+      "icon": null,
+      "color": "#475569",
+      "description": null
+    },
+    {
+      "name": "Dirigeant",
+      "typeName": "Actifs Humains",
+      "parentClassName": "Individu",
+      "icon": null,
+      "color": "#059669",
+      "description": null
+    },
+    {
+      "name": "Local technique",
+      "typeName": "Actifs Physiques",
+      "parentClassName": "Local",
+      "icon": null,
+      "color": null,
+      "description": null
+    },
+    {
+      "name": "Bureau",
+      "typeName": "Actifs Physiques",
+      "parentClassName": "Local",
+      "icon": null,
+      "color": null,
+      "description": null
+    },
+    {
+      "name": "Datacenter",
+      "typeName": "Actifs Physiques",
+      "parentClassName": "Local",
+      "icon": null,
+      "color": null,
+      "description": null
+    },
+    {
+      "name": "Service / Application",
+      "typeName": "Actifs Techniques",
+      "parentClassName": null,
+      "icon": null,
+      "color": "#a78bfa",
+      "description": null
+    },
+    {
+      "name": "Logiciel (Version)",
+      "typeName": "Actifs Techniques",
+      "parentClassName": null,
+      "icon": null,
+      "color": null,
+      "description": null
+    },
+    {
+      "name": "Zone logique",
+      "typeName": "Actifs Techniques",
+      "parentClassName": null,
+      "icon": null,
+      "color": "#7c3aed",
+      "description": null
+    }
+  ],
+  "attributeDefinitions": [
+    {
+      "className": "Structure",
+      "name": "structureType",
+      "kind": "SIMPLE",
+      "order": 0,
+      "required": true,
+      "description": null,
+      "simpleType": "STRING",
+      "validationRegex": null,
+      "maxLength": null,
+      "defaultValue": null,
+      "enumOptions": null
+    },
+    {
+      "className": "Structure",
+      "name": "description",
+      "kind": "SIMPLE",
+      "order": 1,
+      "required": false,
+      "description": null,
+      "simpleType": "TEXT",
+      "validationRegex": null,
+      "maxLength": null,
+      "defaultValue": null,
+      "enumOptions": null
+    },
+    {
+      "className": "Structure",
+      "name": "allowedClassIds",
+      "kind": "SIMPLE",
+      "order": 2,
+      "required": true,
+      "description": null,
+      "simpleType": "TEXT",
+      "validationRegex": null,
+      "maxLength": null,
+      "defaultValue": null,
+      "enumOptions": null
+    },
+    {
+      "className": "Structure",
+      "name": "allowedRelTypes",
+      "kind": "SIMPLE",
+      "order": 3,
+      "required": false,
+      "description": null,
+      "simpleType": "TEXT",
+      "validationRegex": null,
+      "maxLength": null,
+      "defaultValue": null,
+      "enumOptions": null
+    },
+    {
+      "className": "Structure",
+      "name": "maxInstances",
+      "kind": "SIMPLE",
+      "order": 4,
+      "required": false,
+      "description": null,
+      "simpleType": "INTEGER",
+      "validationRegex": null,
+      "maxLength": null,
+      "defaultValue": null,
+      "enumOptions": null
+    },
+    {
+      "className": "Dossier",
+      "name": "organisationId",
+      "kind": "SIMPLE",
+      "order": 0,
+      "required": true,
+      "description": null,
+      "simpleType": "STRING",
+      "validationRegex": null,
+      "maxLength": null,
+      "defaultValue": null,
+      "enumOptions": null
+    },
+    {
+      "className": "Dossier",
+      "name": "parentFolderId",
+      "kind": "SIMPLE",
+      "order": 1,
+      "required": false,
+      "description": null,
+      "simpleType": "STRING",
+      "validationRegex": null,
+      "maxLength": null,
+      "defaultValue": null,
+      "enumOptions": null
+    },
+    {
+      "className": "Vue",
+      "name": "organisationId",
+      "kind": "SIMPLE",
+      "order": 0,
+      "required": true,
+      "description": null,
+      "simpleType": "STRING",
+      "validationRegex": null,
+      "maxLength": null,
+      "defaultValue": null,
+      "enumOptions": null
+    },
+    {
+      "className": "Vue",
+      "name": "structureId",
+      "kind": "SIMPLE",
+      "order": 1,
+      "required": false,
+      "description": null,
+      "simpleType": "STRING",
+      "validationRegex": null,
+      "maxLength": null,
+      "defaultValue": null,
+      "enumOptions": null
+    },
+    {
+      "className": "Vue",
+      "name": "folderId",
+      "kind": "SIMPLE",
+      "order": 2,
+      "required": false,
+      "description": null,
+      "simpleType": "STRING",
+      "validationRegex": null,
+      "maxLength": null,
+      "defaultValue": null,
+      "enumOptions": null
+    },
+    {
+      "className": "Vue",
+      "name": "authorId",
+      "kind": "SIMPLE",
+      "order": 3,
+      "required": false,
+      "description": null,
+      "simpleType": "STRING",
+      "validationRegex": null,
+      "maxLength": null,
+      "defaultValue": null,
+      "enumOptions": null
+    },
+    {
+      "className": "Site",
+      "name": "Adresse",
+      "kind": "SIMPLE",
+      "order": 0,
+      "required": false,
+      "description": "Numéro et voie",
+      "simpleType": "TEXT",
+      "validationRegex": null,
+      "maxLength": null,
+      "defaultValue": null,
+      "enumOptions": null
+    },
+    {
+      "className": "Site",
+      "name": "Code Postal",
+      "kind": "SIMPLE",
+      "order": 0,
+      "required": false,
+      "description": null,
+      "simpleType": "INTEGER",
+      "validationRegex": null,
+      "maxLength": null,
+      "defaultValue": null,
+      "enumOptions": null
+    },
+    {
+      "className": "Site",
+      "name": "Ville",
+      "kind": "SIMPLE",
+      "order": 0,
+      "required": false,
+      "description": null,
+      "simpleType": "STRING",
+      "validationRegex": null,
+      "maxLength": null,
+      "defaultValue": null,
+      "enumOptions": null
+    },
+    {
+      "className": "Local",
+      "name": "Sensibilité",
+      "kind": "SIMPLE",
+      "order": 0,
+      "required": false,
+      "description": null,
+      "simpleType": "ENUM",
+      "validationRegex": null,
+      "maxLength": null,
+      "defaultValue": null,
+      "enumOptions": "[{\"value\":\"1\",\"label\":\"Zone publique\",\"color\":\"#e8e8e8\",\"bgColor\":\"#255e21\"},{\"value\":\"2\",\"label\":\"Zone privée\",\"color\":\"#e8e8e8\",\"bgColor\":\"#05427a\"},{\"value\":\"3\",\"label\":\"Zone Sensible\",\"color\":\"#e8e8e8\",\"bgColor\":\"#660f0f\"}]"
+    },
+    {
+      "className": "Local",
+      "name": "Site",
+      "kind": "COMPLEX",
+      "order": 0,
+      "required": false,
+      "description": null,
+      "relationType": "APPARTENANCE",
+      "inverseAttributeName": "Locaux",
+      "targetClassNames": [
+        "Site"
+      ],
+      "minRelations": 0,
+      "maxRelations": null
+    },
+    {
+      "className": "Site",
+      "name": "Locaux",
+      "kind": "COMPLEX",
+      "order": 99,
+      "required": false,
+      "description": "Inverse de \"Site\"",
+      "relationType": "APPARTENANCE",
+      "inverseAttributeName": "Site",
+      "targetClassNames": [
+        "Local"
+      ],
+      "minRelations": 0,
+      "maxRelations": null
+    },
+    {
+      "className": "Organisation",
+      "name": "Mission(s)",
+      "kind": "COMPLEX",
+      "order": 0,
+      "required": false,
+      "description": null,
+      "relationType": "ASSOCIATION",
+      "inverseAttributeName": "Organisation",
+      "targetClassNames": [
+        "Mission"
+      ],
+      "minRelations": 0,
+      "maxRelations": null
+    },
+    {
+      "className": "Mission",
+      "name": "Organisation",
+      "kind": "COMPLEX",
+      "order": 99,
+      "required": false,
+      "description": "Inverse de \"Mission\"",
+      "relationType": "ASSOCIATION",
+      "inverseAttributeName": "Mission(s)",
+      "targetClassNames": [
+        "Organisation"
+      ],
+      "minRelations": 0,
+      "maxRelations": null
+    },
+    {
+      "className": "Mission",
+      "name": "Processus d'entreprise",
+      "kind": "COMPLEX",
+      "order": 0,
+      "required": false,
+      "description": null,
+      "relationType": "ASSOCIATION",
+      "inverseAttributeName": "Mission",
+      "targetClassNames": [
+        "Macro-Processus"
+      ],
+      "minRelations": 0,
+      "maxRelations": null
+    },
+    {
+      "className": "Macro-Processus",
+      "name": "Mission",
+      "kind": "COMPLEX",
+      "order": 99,
+      "required": false,
+      "description": "Inverse de \"Processus d'entreprise\"",
+      "relationType": "ASSOCIATION",
+      "inverseAttributeName": "Processus d'entreprise",
+      "targetClassNames": [
+        "Mission"
+      ],
+      "minRelations": 0,
+      "maxRelations": null
+    },
+    {
+      "className": "Groupe",
+      "name": "Responsable",
+      "kind": "COMPLEX",
+      "order": 0,
+      "required": false,
+      "description": null,
+      "relationType": "ASSOCIATION",
+      "inverseAttributeName": "Dirige",
+      "targetClassNames": [
+        "Individu"
+      ],
+      "minRelations": 0,
+      "maxRelations": null
+    },
+    {
+      "className": "Individu",
+      "name": "Dirige",
+      "kind": "COMPLEX",
+      "order": 99,
+      "required": false,
+      "description": "Inverse de \"Responsable\"",
+      "relationType": "ASSOCIATION",
+      "inverseAttributeName": "Responsable",
+      "targetClassNames": [
+        "Groupe"
+      ],
+      "minRelations": 0,
+      "maxRelations": null
+    },
+    {
+      "className": "Organisation",
+      "name": "Parties prenantes",
+      "kind": "COMPLEX",
+      "order": 0,
+      "required": false,
+      "description": null,
+      "relationType": "ASSOCIATION",
+      "inverseAttributeName": "Partie intéressée pour",
+      "targetClassNames": [
+        "Partie Prenante"
+      ],
+      "minRelations": 0,
+      "maxRelations": null
+    },
+    {
+      "className": "Partie Prenante",
+      "name": "Partie intéressée pour",
+      "kind": "COMPLEX",
+      "order": 99,
+      "required": false,
+      "description": "Inverse de \"Parties prenantes\"",
+      "relationType": "ASSOCIATION",
+      "inverseAttributeName": "Parties prenantes",
+      "targetClassNames": [
+        "Organisation"
+      ],
+      "minRelations": 0,
+      "maxRelations": null
+    },
+    {
+      "className": "Machine",
+      "name": "Processeur(s)",
+      "kind": "SIMPLE",
+      "order": 0,
+      "required": false,
+      "description": "CPU",
+      "simpleType": "INTEGER",
+      "validationRegex": null,
+      "maxLength": null,
+      "defaultValue": null,
+      "enumOptions": null
+    },
+    {
+      "className": "Machine",
+      "name": "Mémoire (Go)",
+      "kind": "SIMPLE",
+      "order": 0,
+      "required": false,
+      "description": "Capacité RAM",
+      "simpleType": "FLOAT",
+      "validationRegex": null,
+      "maxLength": null,
+      "defaultValue": null,
+      "enumOptions": null
+    },
+    {
+      "className": "Organisation",
+      "name": "Responsable",
+      "kind": "COMPLEX",
+      "order": 0,
+      "required": false,
+      "description": null,
+      "relationType": "ASSOCIATION",
+      "inverseAttributeName": "Dirige",
+      "targetClassNames": [
+        "Dirigeant"
+      ],
+      "minRelations": 0,
+      "maxRelations": null
+    },
+    {
+      "className": "Dirigeant",
+      "name": "Dirige",
+      "kind": "COMPLEX",
+      "order": 99,
+      "required": false,
+      "description": "Inverse de \"Responsable\"",
+      "relationType": "ASSOCIATION",
+      "inverseAttributeName": "Responsable",
+      "targetClassNames": [
+        "Organisation"
+      ],
+      "minRelations": 0,
+      "maxRelations": null
+    },
+    {
+      "className": "Groupe",
+      "name": "membre(s)",
+      "kind": "COMPLEX",
+      "order": 0,
+      "required": false,
+      "description": null,
+      "relationType": "APPARTENANCE",
+      "inverseAttributeName": "Membre de",
+      "targetClassNames": [
+        "Individu",
+        "Groupe"
+      ],
+      "minRelations": 0,
+      "maxRelations": null
+    },
+    {
+      "className": "Individu",
+      "name": "Membre de",
+      "kind": "COMPLEX",
+      "order": 99,
+      "required": false,
+      "description": "Inverse de \"membre(s)\"",
+      "relationType": "APPARTENANCE",
+      "inverseAttributeName": "membre(s)",
+      "targetClassNames": [
+        "Groupe"
+      ],
+      "minRelations": 0,
+      "maxRelations": null
+    },
+    {
+      "className": "Individu",
+      "name": "Nom",
+      "kind": "SIMPLE",
+      "order": 0,
+      "required": false,
+      "description": null,
+      "simpleType": "STRING",
+      "validationRegex": null,
+      "maxLength": null,
+      "defaultValue": null,
+      "enumOptions": null
+    },
+    {
+      "className": "Individu",
+      "name": "Prénom",
+      "kind": "SIMPLE",
+      "order": 0,
+      "required": false,
+      "description": null,
+      "simpleType": "STRING",
+      "validationRegex": null,
+      "maxLength": null,
+      "defaultValue": null,
+      "enumOptions": null
+    },
+    {
+      "className": "Individu",
+      "name": "Adresse mail",
+      "kind": "SIMPLE",
+      "order": 0,
+      "required": false,
+      "description": null,
+      "simpleType": "STRING",
+      "validationRegex": null,
+      "maxLength": null,
+      "defaultValue": null,
+      "enumOptions": null
+    },
+    {
+      "className": "Equipement Moyens généraux",
+      "name": "Emplacement",
+      "kind": "COMPLEX",
+      "order": 0,
+      "required": false,
+      "description": null,
+      "relationType": "ASSOCIATION",
+      "inverseAttributeName": "Matériels",
+      "targetClassNames": [
+        "Local technique"
+      ],
+      "minRelations": 0,
+      "maxRelations": null
+    },
+    {
+      "className": "Local technique",
+      "name": "Matériels",
+      "kind": "COMPLEX",
+      "order": 99,
+      "required": false,
+      "description": "Inverse de \"Emplacements\"",
+      "relationType": "ASSOCIATION",
+      "inverseAttributeName": "Emplacement",
+      "targetClassNames": [
+        "Equipement Moyens généraux"
+      ],
+      "minRelations": 0,
+      "maxRelations": null
+    },
+    {
+      "className": "Datacenter",
+      "name": "Baies",
+      "kind": "COMPLEX",
+      "order": 0,
+      "required": false,
+      "description": null,
+      "relationType": "ASSOCIATION",
+      "inverseAttributeName": "Emplacement",
+      "targetClassNames": [
+        "Baie"
+      ],
+      "minRelations": 0,
+      "maxRelations": null
+    },
+    {
+      "className": "Baie",
+      "name": "Emplacement",
+      "kind": "COMPLEX",
+      "order": 99,
+      "required": false,
+      "description": "Inverse de \"Baies\"",
+      "relationType": "ASSOCIATION",
+      "inverseAttributeName": "Baies",
+      "targetClassNames": [
+        "Datacenter"
+      ],
+      "minRelations": 0,
+      "maxRelations": null
+    },
+    {
+      "className": "Bureau",
+      "name": "Occupants",
+      "kind": "COMPLEX",
+      "order": 0,
+      "required": false,
+      "description": null,
+      "relationType": "ASSOCIATION",
+      "inverseAttributeName": "Emplacement",
+      "targetClassNames": [
+        "Groupe"
+      ],
+      "minRelations": 0,
+      "maxRelations": null
+    },
+    {
+      "className": "Groupe",
+      "name": "Emplacement",
+      "kind": "COMPLEX",
+      "order": 99,
+      "required": false,
+      "description": "Inverse de \"Occupants\"",
+      "relationType": "ASSOCIATION",
+      "inverseAttributeName": "Occupants",
+      "targetClassNames": [
+        "Bureau"
+      ],
+      "minRelations": 0,
+      "maxRelations": null
+    },
+    {
+      "className": "Macro-Processus",
+      "name": "Processus",
+      "kind": "COMPLEX",
+      "order": 0,
+      "required": false,
+      "description": null,
+      "relationType": "ASSOCIATION",
+      "inverseAttributeName": "Macro-Processus",
+      "targetClassNames": [
+        "Processus Métier"
+      ],
+      "minRelations": 0,
+      "maxRelations": null
+    },
+    {
+      "className": "Processus Métier",
+      "name": "Macro-Processus",
+      "kind": "COMPLEX",
+      "order": 99,
+      "required": false,
+      "description": "Inverse de \"Processus\"",
+      "relationType": "ASSOCIATION",
+      "inverseAttributeName": "Processus",
+      "targetClassNames": [
+        "Macro-Processus"
+      ],
+      "minRelations": 0,
+      "maxRelations": null
+    },
+    {
+      "className": "Processus Métier",
+      "name": "Dépendance(s) humaine(s)",
+      "kind": "COMPLEX",
+      "order": 0,
+      "required": false,
+      "description": null,
+      "relationType": "DEPENDANCE",
+      "inverseAttributeName": "Processus",
+      "targetClassNames": [
+        "Groupe"
+      ],
+      "minRelations": 0,
+      "maxRelations": null
+    },
+    {
+      "className": "Groupe",
+      "name": "Processus",
+      "kind": "COMPLEX",
+      "order": 99,
+      "required": false,
+      "description": "Inverse de \"Réalisé par\"",
+      "relationType": "ASSOCIATION",
+      "inverseAttributeName": "Dépendance(s) humaine(s)",
+      "targetClassNames": [
+        "Processus Métier"
+      ],
+      "minRelations": 0,
+      "maxRelations": null
+    },
+    {
+      "className": "Logiciel",
+      "name": "Editeur",
+      "kind": "COMPLEX",
+      "order": 0,
+      "required": false,
+      "description": null,
+      "relationType": "ASSOCIATION",
+      "inverseAttributeName": "Logciel fourni",
+      "targetClassNames": [
+        "Fournisseur"
+      ],
+      "minRelations": 0,
+      "maxRelations": null
+    },
+    {
+      "className": "Fournisseur",
+      "name": "Logciel fourni",
+      "kind": "COMPLEX",
+      "order": 99,
+      "required": false,
+      "description": "Inverse de \"Fournisseur\"",
+      "relationType": "ASSOCIATION",
+      "inverseAttributeName": "Editeur",
+      "targetClassNames": [
+        "Logiciel"
+      ],
+      "minRelations": 0,
+      "maxRelations": null
+    },
+    {
+      "className": "Logiciel (Version)",
+      "name": "Logiciel",
+      "kind": "COMPLEX",
+      "order": 0,
+      "required": false,
+      "description": null,
+      "relationType": "ASSOCIATION",
+      "inverseAttributeName": "Version",
+      "targetClassNames": [
+        "Logiciel"
+      ],
+      "minRelations": 0,
+      "maxRelations": null
+    },
+    {
+      "className": "Logiciel",
+      "name": "Version",
+      "kind": "COMPLEX",
+      "order": 99,
+      "required": false,
+      "description": "Inverse de \"Logiciel\"",
+      "relationType": "ASSOCIATION",
+      "inverseAttributeName": "Logiciel",
+      "targetClassNames": [
+        "Logiciel (Version)"
+      ],
+      "minRelations": 0,
+      "maxRelations": null
+    },
+    {
+      "className": "Structure",
+      "name": "sortOrder",
+      "kind": "SIMPLE",
+      "order": 99,
+      "required": false,
+      "description": null,
+      "simpleType": "INTEGER",
+      "validationRegex": null,
+      "maxLength": null,
+      "defaultValue": null,
+      "enumOptions": null
+    },
+    {
+      "className": "Processus Métier",
+      "name": "Dépendance(s) technique(s)",
+      "kind": "COMPLEX",
+      "order": 0,
+      "required": false,
+      "description": null,
+      "relationType": "DEPENDANCE",
+      "inverseAttributeName": "Processus associé(s)",
+      "targetClassNames": [
+        "Service / Application",
+        "Logiciel"
+      ],
+      "minRelations": 0,
+      "maxRelations": null
+    },
+    {
+      "className": "Service / Application",
+      "name": "Processus associé(s)",
+      "kind": "COMPLEX",
+      "order": 99,
+      "required": false,
+      "description": "Inverse de \"Outils\"",
+      "relationType": "DEPENDANCE",
+      "inverseAttributeName": "Dépendance(s) technique(s)",
+      "targetClassNames": [
+        "Processus Métier"
+      ],
+      "minRelations": 0,
+      "maxRelations": null
+    },
+    {
+      "className": "Processus Métier",
+      "name": "Dépendance(s) physique(s)",
+      "kind": "COMPLEX",
+      "order": 0,
+      "required": false,
+      "description": null,
+      "relationType": "DEPENDANCE",
+      "inverseAttributeName": "Processus  associé(s)",
+      "targetClassNames": [
+        "Local"
+      ],
+      "minRelations": 0,
+      "maxRelations": null
+    },
+    {
+      "className": "Local",
+      "name": "Processus  associé(s)",
+      "kind": "COMPLEX",
+      "order": 99,
+      "required": false,
+      "description": "Inverse de \"Emplacement\"",
+      "relationType": "ASSOCIATION",
+      "inverseAttributeName": "Dépendance(s) physique(s)",
+      "targetClassNames": [
+        "Processus Métier"
+      ],
+      "minRelations": 0,
+      "maxRelations": null
+    },
+    {
+      "className": "Macro-Processus",
+      "name": "Besoin de disponibilité",
+      "kind": "SIMPLE",
+      "order": 0,
+      "required": false,
+      "description": "Que se passe-t-il si le processus est inaccessible ?",
+      "simpleType": "ENUM",
+      "validationRegex": null,
+      "maxLength": null,
+      "defaultValue": null,
+      "enumOptions": "[{\"value\":\"1\",\"label\":\"FAIBLE\",\"description\":\"Interruption tolérée > 1 semaine, aucun impact opérationnel immédiat\",\"color\":\"#e8e8e8\",\"bgColor\":\"#016f0b\"},{\"value\":\"2\",\"label\":\"MOYEN\",\"description\":\"Interruption tolérée quelques jours, impact limité et récupérable\",\"color\":\"#faf4f4\",\"bgColor\":\"#ad9601\"},{\"value\":\"3\",\"label\":\"ELEVE\",\"description\":\"Interruption tolérée < 4h, impact significatif sur les missions\",\"color\":\"#e8e8e8\",\"bgColor\":\"#b76406\"},{\"value\":\"3\",\"label\":\"CRITIQUE\",\"description\":\"Interruption zéro tolérée, impact immédiat critique (vies, revenus, légal)\",\"color\":\"#e8e8e8\",\"bgColor\":\"#940007\"}]"
+    },
+    {
+      "className": "Macro-Processus",
+      "name": "Besoin de confidentialité",
+      "kind": "SIMPLE",
+      "order": 0,
+      "required": false,
+      "description": "Que se passe-t-il si la donnée traitée est divulguée ?",
+      "simpleType": "ENUM",
+      "validationRegex": null,
+      "maxLength": null,
+      "defaultValue": null,
+      "enumOptions": "[{\"value\":\"1\",\"label\":\"FAIBLE\",\"description\":\"Données publiques ou à faible sensibilité, divulgation sans impact\",\"color\":\"#e8e8e8\",\"bgColor\":\"#016f01\"},{\"value\":\"2\",\"label\":\"MOYEN\",\"description\":\"Données internes, divulgation gênante mais sans conséquence grave\",\"color\":\"#e8e8e8\",\"bgColor\":\"#ad9601\"},{\"value\":\"3\",\"label\":\"ELEVE\",\"description\":\"Données  personnelles,  stratégiques, divulgation à impact juridique ou réputationnel fort\",\"color\":\"#e8e8e8\",\"bgColor\":\"#b76406\"},{\"value\":\"4\",\"label\":\"CRITIQUE\",\"description\":\"Données sensibles, propriété industrielle critique, divulgation catastrophique\",\"color\":\"#e8e8e8\",\"bgColor\":\"#940007\"}]"
+    },
+    {
+      "className": "Macro-Processus",
+      "name": "Besoin d'intégrité",
+      "kind": "SIMPLE",
+      "order": 0,
+      "required": false,
+      "description": "Que se passe-t-il si la donnée traitée est altérée ou corrompue ?",
+      "simpleType": "ENUM",
+      "validationRegex": null,
+      "maxLength": null,
+      "defaultValue": null,
+      "enumOptions": "[{\"value\":\"1\",\"label\":\"FAIBLE\",\"description\":\"Erreur détectable facilement, sans conséquence majeure\",\"color\":\"#e8e8e8\",\"bgColor\":\"#016f01\"},{\"value\":\"2\",\"label\":\"MOYEN\",\"description\":\"Erreur difficile à détecter, impact limité et corrigeable\",\"color\":\"#e8e8e8\",\"bgColor\":\"#ad9601\"},{\"value\":\"3\",\"label\":\"ELEVE\",\"description\":\"Erreur grave, décisions erronées, impact financier ou juridique\",\"color\":\"#e8e8e8\",\"bgColor\":\"#b76406\"},{\"value\":\"4\",\"label\":\"CRITIQUE\",\"description\":\"Altération catastrophique, mise en danger de vies ou fraude massive\",\"color\":\"#e8e8e8\",\"bgColor\":\"#940007\"}]"
+    },
+    {
+      "className": "Macro-Processus",
+      "name": "besoin d'auditabilité",
+      "kind": "SIMPLE",
+      "order": 0,
+      "required": false,
+      "description": "Que se passe-t-il si on ne peut pas prouver ce qui s'est passé ?",
+      "simpleType": "ENUM",
+      "validationRegex": null,
+      "maxLength": null,
+      "defaultValue": null,
+      "enumOptions": "[{\"value\":\"1\",\"label\":\"FAIBLE\",\"description\":\"Aucune obligation de traçabilité, pas de litige envisageable\",\"color\":\"#e8e8e8\",\"bgColor\":\"#016f01\"},{\"value\":\"2\",\"label\":\"MOYEN\",\"description\":\"Traçabilité utile en cas de contrôle interne, mais non critique\",\"color\":\"#e8e8e8\",\"bgColor\":\"#ad9601\"},{\"value\":\"3\",\"label\":\"ELEVE\",\"description\":\"Obligation réglementaire de journalisation, risque de litige ou d'audit externe\",\"color\":\"#e8e8e8\",\"bgColor\":\"#b76406\"},{\"value\":\"4\",\"label\":\"CRITIQUE\",\"description\":\"Obligation légale stricte (preuve judiciaire, conformité SOX/RGPD/NIS2), non-répudiation indispensable\",\"color\":\"#e8e8e8\",\"bgColor\":\"#940007\"}]"
+    },
+    {
+      "className": "Processus Métier",
+      "name": "Donnée(s) d'entrée",
+      "kind": "COMPLEX",
+      "order": 0,
+      "required": false,
+      "description": null,
+      "relationType": "DEPENDANCE",
+      "inverseAttributeName": "Alimente",
+      "targetClassNames": [
+        "Information"
+      ],
+      "minRelations": 0,
+      "maxRelations": null
+    },
+    {
+      "className": "Information",
+      "name": "Alimente",
+      "kind": "COMPLEX",
+      "order": 99,
+      "required": false,
+      "description": "Inverse de \"Donnée(s) d'entrée\"",
+      "relationType": "DEPENDANCE",
+      "inverseAttributeName": "Donnée(s) d'entrée",
+      "targetClassNames": [
+        "Processus Métier"
+      ],
+      "minRelations": 0,
+      "maxRelations": null
+    },
+    {
+      "className": "Processus Métier",
+      "name": "Donnée(s) de sortie",
+      "kind": "COMPLEX",
+      "order": 0,
+      "required": false,
+      "description": null,
+      "relationType": "PRODUCTION",
+      "inverseAttributeName": "Produit",
+      "targetClassNames": [
+        "Information"
+      ],
+      "minRelations": 0,
+      "maxRelations": null
+    },
+    {
+      "className": "Information",
+      "name": "Produit",
+      "kind": "COMPLEX",
+      "order": 99,
+      "required": false,
+      "description": "Inverse de \"Donnée(s) de sortie\"",
+      "relationType": "PRODUCTION",
+      "inverseAttributeName": "Donnée(s) de sortie",
+      "targetClassNames": [
+        "Processus Métier"
+      ],
+      "minRelations": 0,
+      "maxRelations": null
+    },
+    {
+      "className": "Information",
+      "name": "Dépendance(s) technique(s)",
+      "kind": "COMPLEX",
+      "order": 0,
+      "required": false,
+      "description": null,
+      "relationType": "DEPENDANCE",
+      "inverseAttributeName": "Traite / Stocke",
+      "targetClassNames": [
+        "Service / Application"
+      ],
+      "minRelations": 0,
+      "maxRelations": null
+    },
+    {
+      "className": "Service / Application",
+      "name": "Traite / Stocke",
+      "kind": "COMPLEX",
+      "order": 99,
+      "required": false,
+      "description": "Inverse de \"Dépendance(s) technique(s)\"",
+      "relationType": "ASSOCIATION",
+      "inverseAttributeName": "Dépendance(s) technique(s)",
+      "targetClassNames": [
+        "Information"
+      ],
+      "minRelations": 0,
+      "maxRelations": null
+    },
+    {
+      "className": "Poste de travail",
+      "name": "Affecté à",
+      "kind": "COMPLEX",
+      "order": 0,
+      "required": false,
+      "description": null,
+      "relationType": "ASSOCIATION",
+      "inverseAttributeName": "Poste de travail",
+      "targetClassNames": [
+        "Individu"
+      ],
+      "minRelations": 0,
+      "maxRelations": null
+    },
+    {
+      "className": "Individu",
+      "name": "Poste de travail",
+      "kind": "COMPLEX",
+      "order": 99,
+      "required": false,
+      "description": "Inverse de \"Affecté à\"",
+      "relationType": "ASSOCIATION",
+      "inverseAttributeName": "Affecté à",
+      "targetClassNames": [
+        "Poste de travail"
+      ],
+      "minRelations": 0,
+      "maxRelations": null
+    }
+  ],
+  "structures": [
+    {
+      "label": "Ecosystème",
+      "structureType": "Organisationnelle",
+      "description": "Organisation et ses parties prenantes internes et externes",
+      "allowedClassNames": [
+        "Organisation",
+        "Partie Prenante",
+        "Groupe",
+        "Fournisseur",
+        "Dirigeant"
+      ],
+      "allowedRelTypes": [
+        "APPARTENANCE",
+        "ASSOCIATION"
+      ],
+      "maxInstances": 1,
+      "parentElementClassName": null
+    },
+    {
+      "label": "Organigramme",
+      "structureType": "Organisationnelle",
+      "description": "Structure hiérarchique des équipes et collaborateurs",
+      "allowedClassNames": [
+        "Groupe",
+        "Individu",
+        "Organisation"
+      ],
+      "allowedRelTypes": [
+        "APPARTENANCE"
+      ],
+      "maxInstances": 1,
+      "parentElementClassName": null
+    },
+    {
+      "label": "Système d'information",
+      "structureType": "Technique",
+      "description": "Infrastructure matérielle et logicielle du SI",
+      "allowedClassNames": [
+        "Machine physique",
+        "Machine Virtuelle",
+        "Serveur",
+        "25ae1ff4-f0bf-4058-a05e-901b1e6d24bc",
+        "478a0e9c-90e6-4433-8476-24aca5eb8d28",
+        "aef022d1-a735-4f60-8f42-7986dacdacc2",
+        "9e572d02-aaed-4dea-8760-abbbed90ae04",
+        "Système d'exploitation",
+        "8cff7ae2-b7f7-4d4b-83c1-e08ae984cc69",
+        "Groupe",
+        "Machine",
+        "Zone logique"
+      ],
+      "allowedRelTypes": [
+        "APPARTENANCE",
+        "DEPENDANCE"
+      ],
+      "maxInstances": null,
+      "parentElementClassName": null
+    },
+    {
+      "label": "Services applicatifs",
+      "structureType": "Technique",
+      "description": "Applications, composants et services logiciels",
+      "allowedClassNames": [
+        "8cff7ae2-b7f7-4d4b-83c1-e08ae984cc69",
+        "10c52a32-6223-48e9-a8c0-96959570dc4a",
+        "Composant",
+        ".Net",
+        "PowerShell",
+        "Domaine Active Directory",
+        "Unité d'organisation",
+        "Serveur Web IIS",
+        "Groupe"
+      ],
+      "allowedRelTypes": [
+        "APPARTENANCE",
+        "DEPENDANCE"
+      ],
+      "maxInstances": null,
+      "parentElementClassName": null
+    },
+    {
+      "label": "Sites & Plans",
+      "structureType": "Physique",
+      "description": "Sites physiques et locaux de l'organisation",
+      "allowedClassNames": [
+        "Organisation",
+        "Local",
+        "Site"
+      ],
+      "allowedRelTypes": [
+        "APPARTENANCE",
+        "ACCES"
+      ],
+      "maxInstances": null,
+      "parentElementClassName": null
+    },
+    {
+      "label": "Macro-Processus",
+      "structureType": "Organisationnelle",
+      "description": "Les processus de l'organisation",
+      "allowedClassNames": [
+        "Groupe",
+        "Individu",
+        "Partie Prenante",
+        "Macro-Processus",
+        "Information",
+        "Mission"
+      ],
+      "allowedRelTypes": [
+        "APPARTENANCE",
+        "DEPENDANCE",
+        "PRODUCTION"
+      ],
+      "maxInstances": 1,
+      "parentElementClassName": null
+    },
+    {
+      "label": "Processus",
+      "structureType": "Organisationnelle",
+      "description": null,
+      "allowedClassNames": [
+        "Groupe",
+        "Service / Application",
+        "Site",
+        "Local",
+        "Local technique",
+        "Datacenter",
+        "Bureau",
+        "Information",
+        "Activité",
+        "Processus Métier"
+      ],
+      "allowedRelTypes": [],
+      "maxInstances": null,
+      "parentElementClassName": null
+    },
+    {
+      "label": "Missions",
+      "structureType": "Organisationnelle",
+      "description": null,
+      "allowedClassNames": [
+        "Organisation",
+        "Mission"
+      ],
+      "allowedRelTypes": [],
+      "maxInstances": 1,
+      "parentElementClassName": null
+    }
+  ]
+}

@@ -9,19 +9,17 @@ import {
   Relation,
   User,
   RefreshToken,
+  DocumentRevision,
+  ViewElementPosition,
 } from '../entities';
 
 export const AppDataSource = new DataSource({
   type: 'better-sqlite3',
   database: process.env.DB_PATH ?? 'cm2b.sqlite',
 
-  /**
-   * En production : migrations UNIQUEMENT (synchronize: false).
-   * En développement : synchronize: true acceptable mais attention
-   * aux pertes de données lors des changements de schéma.
-   */
-  synchronize: process.env.NODE_ENV !== 'production',
-  migrationsRun: process.env.NODE_ENV === 'production',
+  // TYPEORM_SYNC=false pour désactiver (ex: migration manuelle). Par défaut true.
+  synchronize: process.env.TYPEORM_SYNC !== 'false',
+  migrationsRun: false,
 
   logging: process.env.DB_LOGGING === 'true' ? ['query', 'error'] : ['error'],
 
@@ -34,6 +32,8 @@ export const AppDataSource = new DataSource({
     Relation,
     User,
     RefreshToken,
+    DocumentRevision,
+    ViewElementPosition,
   ],
 
   migrations: ['dist/database/migrations/*.js'],

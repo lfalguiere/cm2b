@@ -1,4 +1,3 @@
-// src/app/features/auth/login/login.component.ts
 import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -6,36 +5,44 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-setup',
   standalone: true,
   imports: [CommonModule, FormsModule],
   template: `
     <div class="login-wrapper">
       <div class="login-card">
 
-        <!-- Gauche : branding -->
         <div class="login-brand">
           <img src="/cm2b.png" alt="CM2B" class="logo-img"/>
         </div>
 
-        <!-- Séparateur -->
         <div class="login-sep"></div>
 
-        <!-- Droite : formulaire -->
         <form class="login-form" (ngSubmit)="onSubmit()">
+          <p class="setup-title">Configuration initiale</p>
+          <p class="setup-subtitle">Créez votre compte administrateur</p>
+
           <div class="field">
             <label for="email">Email</label>
-            <input id="email" type="email" [(ngModel)]="email" name="email" autocomplete="username" required/>
+            <input id="email" type="email" [(ngModel)]="email" name="email" autocomplete="email" required/>
+          </div>
+          <div class="field">
+            <label for="username">Nom d'utilisateur</label>
+            <input id="username" type="text" [(ngModel)]="username" name="username" autocomplete="username" required/>
           </div>
           <div class="field">
             <label for="password">Mot de passe</label>
-            <input id="password" type="password" [(ngModel)]="password" name="password" autocomplete="current-password" required/>
+            <input id="password" type="password" [(ngModel)]="password" name="password" autocomplete="new-password" required/>
+            <span class="hint">12 car. min · maj · min · chiffre · spécial</span>
           </div>
           @if (error()) {
             <div class="error-msg">{{ error() }}</div>
           }
+          @if (success()) {
+            <div class="success-msg">{{ success() }}</div>
+          }
           <button type="submit" [disabled]="loading()">
-            {{ loading() ? 'Connexion…' : 'Se connecter' }}
+            {{ loading() ? 'Création…' : 'Créer le compte admin' }}
           </button>
         </form>
 
@@ -43,7 +50,6 @@ import { AuthService } from '../../../core/services/auth.service';
     </div>
   `,
   styles: [`
-
     :host { display: block; }
 
     .login-wrapper {
@@ -63,7 +69,6 @@ import { AuthService } from '../../../core/services/auth.service';
       overflow: hidden;
     }
 
-    /* Gauche */
     .login-brand {
       flex: 0 0 220px;
       display: flex; align-items: center; justify-content: center;
@@ -71,23 +76,27 @@ import { AuthService } from '../../../core/services/auth.service';
       background: #0d0d0d;
     }
     .logo-img {
-      width: 140px;
-      height: auto;
-      display: block;
-      object-fit: contain;
+      width: 140px; height: auto;
+      display: block; object-fit: contain;
     }
 
-    /* Séparateur */
     .login-sep {
       width: 1px; align-self: stretch;
       background: #2a2a2a; flex-shrink: 0;
     }
 
-    /* Droite */
     .login-form {
       flex: 1;
-      padding: 2rem 2rem;
+      padding: 2rem;
       display: flex; flex-direction: column; gap: 0;
+    }
+    .setup-title {
+      font-size: .95rem; font-weight: 700; color: #e8e8e8;
+      margin-bottom: .2rem;
+    }
+    .setup-subtitle {
+      font-size: .75rem; color: #555;
+      margin-bottom: 1.2rem;
     }
     .field { display: flex; flex-direction: column; gap: .3rem; margin-bottom: .85rem; }
     label {
@@ -102,6 +111,7 @@ import { AuthService } from '../../../core/services/auth.service';
       outline: none; width: 100%;
     }
     input:focus { border-color: #6366f1; }
+    .hint { font-size: .68rem; color: #444; }
     button {
       width: 100%; padding: .62rem;
       background: #6366f1; color: #fff;
@@ -122,26 +132,41 @@ import { AuthService } from '../../../core/services/auth.service';
       font-size: .78rem;
       margin-bottom: .6rem;
     }
+    .success-msg {
+      background: rgba(16,185,129,.08);
+      border: 1px solid rgba(16,185,129,.25);
+      color: #34d399;
+      padding: .5rem .75rem;
+      border-radius: 6px;
+      font-size: .78rem;
+      margin-bottom: .6rem;
+    }
   `],
 })
-export class LoginComponent {
+export class SetupComponent {
   private readonly auth   = inject(AuthService);
   private readonly router = inject(Router);
 
   email    = '';
+  username = '';
   password = '';
   loading  = signal(false);
   error    = signal<string | null>(null);
+  success  = signal<string | null>(null);
 
   onSubmit() {
-    if (!this.email || !this.password) return;
+    if (!this.email || !this.username || !this.password) return;
     this.loading.set(true);
     this.error.set(null);
 
-    this.auth.login({ email: this.email, password: this.password }).subscribe({
-      next: () => this.router.navigate(['/']),
+    this.auth.setupAdmin(this.email, this.username, this.password).subscribe({
+      next: () => {
+        this.success.set('Compte admin créé. Redirection vers la connexion…');
+        this.loading.set(false);
+        setTimeout(() => this.router.navigate(['/login']), 1500);
+      },
       error: (err) => {
-        this.error.set(err?.error?.message ?? 'Identifiants invalides');
+        this.error.set(err?.error?.message ?? 'Erreur lors de la création du compte');
         this.loading.set(false);
       },
     });

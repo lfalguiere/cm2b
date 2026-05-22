@@ -1,6 +1,7 @@
 // src/app/app.component.ts
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, OnInit, inject } from '@angular/core';
+import { Router, RouterOutlet } from '@angular/router';
+import { AuthService } from './core/services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -13,4 +14,13 @@ import { RouterOutlet } from '@angular/router';
     body { font-family: system-ui, sans-serif; }
   `],
 })
-export class AppComponent {}
+export class AppComponent implements OnInit {
+  private readonly auth   = inject(AuthService);
+  private readonly router = inject(Router);
+
+  ngOnInit() {
+    this.auth.checkSetupNeeded().subscribe(needed => {
+      if (needed) this.router.navigate(['/setup']);
+    });
+  }
+}

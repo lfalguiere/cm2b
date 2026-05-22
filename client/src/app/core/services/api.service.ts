@@ -224,5 +224,8 @@ export class ApiService {
 
     importData: (data: any): Observable<{ imported: Record<string, number> }> =>
       this.http.post<{ imported: Record<string, number> }>(`${this.base}/admin/import`, data),
+
+    exportSeed: (): Observable<any> =>
+      this.http.get<any>(`${this.base}/admin/seed`),
   };
 }

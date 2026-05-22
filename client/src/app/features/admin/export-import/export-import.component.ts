@@ -99,7 +99,6 @@ import { AuthService } from '../../../core/services/auth.service';
 }
   `,
   styles: [`
-    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Syne:wght@400;600;700&display=swap');
     :host { display:block; height:100vh; background:#0d0d0d; color:#e8e8e8; font-family:'Syne',sans-serif; }
     .shell { display:flex; flex-direction:column; height:100vh; }
 
