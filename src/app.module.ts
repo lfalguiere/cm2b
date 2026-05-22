@@ -79,7 +79,7 @@ import { RolesGuard } from './auth/guards/roles.guard';
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'client', 'dist', 'cm2b-app', 'browser'),
       exclude: ['/api/{*path}'],
-      renderPath: '/*',
+      renderPath: '/{*path}',
     }),
 
     AuthModule,
