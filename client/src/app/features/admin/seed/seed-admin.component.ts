@@ -14,7 +14,7 @@ import { AuthService } from '../../../core/services/auth.service';
     <nav>
       <a routerLink="/admin">Administration</a>
     </nav>
-    <span class="page-title">Seed du méta-modèle</span>
+    <span class="page-title">Seed des classes</span>
     <button class="btn-logout" (click)="auth.logout()">Déconnexion</button>
   </header>
 
