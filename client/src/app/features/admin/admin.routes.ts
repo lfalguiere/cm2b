@@ -28,6 +28,6 @@ export const adminRoutes: Routes = [
     path: 'seed',
     loadComponent: () =>
       import('./seed/seed-admin.component').then((m) => m.SeedAdminComponent),
-    title: 'CM2B — Admin · Seed du méta-modèle',
+    title: 'CM2B — Admin · Seed des classes',
   },
 ];
